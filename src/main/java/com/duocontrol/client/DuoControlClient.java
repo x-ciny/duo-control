@@ -64,7 +64,7 @@ public class DuoControlClient implements ClientModInitializer {
     /** BODY: ignore own mouse buttons, apply the mouse player's input instead. */
     private static void bodyTick(Minecraft mc) {
         if (role != RolePayload.BODY || mc.player == null) return;
-        if (mc.screen != null) { // inventory etc: the body uses its own mouse here
+        if (mc.gui.screen() != null) { // inventory etc: the body uses its own mouse here
             prevAttack = prevUse = false;
             return;
         }
@@ -115,7 +115,7 @@ public class DuoControlClient implements ClientModInitializer {
             return;
         }
 
-        boolean inGame = mc.screen == null;
+        boolean inGame = mc.gui.screen() == null;
         boolean attack = inGame && mc.options.keyAttack.isDown();
         boolean use = inGame && mc.options.keyUse.isDown();
         int scroll = pendingScroll;
