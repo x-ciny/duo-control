@@ -27,9 +27,9 @@ public class DuoControl implements ModInitializer {
     @Override
     public void onInitialize() {
         // Packets
-        PayloadTypeRegistry.playC2S().register(MouseInputPayload.TYPE, MouseInputPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(MouseInputPayload.TYPE, MouseInputPayload.CODEC);
-        PayloadTypeRegistry.playS2C().register(RolePayload.TYPE, RolePayload.CODEC);
+        PayloadTypeRegistry.serverboundPlay().register(MouseInputPayload.TYPE, MouseInputPayload.CODEC);
+        PayloadTypeRegistry.clientboundPlay().register(MouseInputPayload.TYPE, MouseInputPayload.CODEC);
+        PayloadTypeRegistry.clientboundPlay().register(RolePayload.TYPE, RolePayload.CODEC);
 
         // Mouse player -> server -> body player
         ServerPlayNetworking.registerGlobalReceiver(MouseInputPayload.TYPE, (payload, ctx) -> {
