@@ -17,7 +17,7 @@ public abstract class MouseHandlerMixin {
         int role = DuoControlClient.role;
         if (role == RolePayload.NONE) return;
         Minecraft mc = Minecraft.getInstance();
-        if (mc.screen != null) return; // menus scroll normally
+        if (mc.gui.screen() != null) return; // menus scroll normally
         if (role == RolePayload.MOUSE) {
             DuoControlClient.pendingScroll += (int) Math.signum(yOffset);
         }
